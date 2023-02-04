@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+
+{% block styling %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'general/css/index.css' %}">
+<link rel="preload" href="{% static 'static/img/landing-1.jpg'%}" as="image"> 
+<link rel="preload" href="{% static 'static/img/landing-2.jpg'%}" as="image"> 
+<link rel="preload" href="{% static 'static/img/landing-3.jpg'%}" as="image"> 
+<link rel="preload" href="{% static 'static/img/landing-4.jpg'%}" as="image"> 
+<link rel="preload" href="{% static 'static/img/landing-5.jpg'%}" as="image"> 
+{% endblock styling %}
+
+{% block windowTitle %} Home - St Edward the Confessor {% endblock %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0" nonce="LaslBHX5"></script>
+
+<!-- Home Content -->
+<div class="homeContent flex-grow-1">
+    <div class="landing">
+
+        <div class="backlayer">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active carousel-image bg-img-1" data-bs-interval=3000 style="background-image: url('{% static 'static/img/landing-1.jpg'%}')">
+                    <!-- <img src="{% static 'static/img/stock1.jpeg' %}" class="d-block w-100 h-100" alt="..."> -->
+                </div>
+                <div class="carousel-item carousel-image bg-img-1" data-bs-interval=3000 style="background-image: url('{% static 'static/img/landing-5.jpg'%}')"></div>
+                <div class="carousel-item carousel-image bg-img-1" data-bs-interval=3000 style="background-image: url('{% static 'static/img/landing-2.jpg'%}')"></div>
+                <div class="carousel-item carousel-image bg-img-1" data-bs-interval=3000 style="background-image: url('{% static 'static/img/landing-3.jpg'%}')"></div>
+                <div class="carousel-item carousel-image bg-img-1" data-bs-interval=3000 style="background-image: url('{% static 'static/img/landing-4.jpg'%}')"></div>
+                
+
+                
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="frontlayer d-flex flex-column align-items-start justify-content-around justify-content-md-center px-5">
+            <div class="startText">
+                <div class="homeTitle">
+                    Welcome to the Parish of St Edward the Confessor
+                </div>
+
+                <div class="homeComment">
+                    Growing together in Christ
+                </div>
+            </div>
+
+            <a href="#priestWelcome" class="findButton d-flex justify-content-center align-items-center">
+                Find out More
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Message from Parish Priest -->
+<div class="priestWelcomeBackground">
+    <div class="container px-5 pt-3 w-100" id="priestWelcome">
+        <!-- Header -->
+        <div class="row">
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <div class="priestWriting">
+                    <div class="priestMessage">
+                        Message from the Parish Priest, Fr Giorgio Miles
+                    </div>
+
+                    <!-- Priest Text -->
+                    <div class="priestText">
+                        <div class="d-flex justify-content-center align-items-center speechMarks">
+                            "
+                        </div>
+
+                        <div>
+                            Welcome to our new website. Together with the Parish Hub the site acts as the contact point for all
+non-urgent matters.
+As we move into the Synodical process in the Roman Catholic Church we are developing more active
+involvement and leadership among our laypeople. We are seeking new ways of reaching out into the
+community to those we are called by the gospel to serve.
+We are a large parish that was originally three parishes. We have two churches (St Cuthbert’s and
+Sacred Heart) and three catholic schools.
+There is a warm welcome to everyone in our churches. If you would like to find more about
+Christianity and the Catholic Church come along and talk to us. We run programs to help people
+explore their faith and understand the role of the Church in an informal setting.
+We are developing our parish community so as to better develop the gifts of our people so that we
+continue to live out our gospel calling and we want you to be a part of this.
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center speechMarks">
+                            "
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priest Image -->
+                
+                <div class="col-6 col-md-4 priestImage mx-auto mt-3" >
+                    <img class="mb-auto" src="{% static 'static/img/fr-giorgio-portraitpng.png' %}" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Message from Parish Priest -->
+
+<!-- About our Parish -->
+<div class="ourParishContainer">
+    <div class="container ourParishContainer w-100">
+        <div class="row">
+
+            <div class="px-5 py-4">
+                <div class="ourParishTitle">
+                    Our Parish
+                </div>
+
+                <div class="ourParishMessage">
+                    St Edward’s parish was formed from the original parishes of St Edward, St Cuthbert and Sacred Heart
+in Wigan.
+The parish is led by Father Giorgio Miles, our Parish Priest, who is assisted by two Pastoral Deacons,
+Deacon Anil Lukose and Deacon Mick Moffatt.
+We are developing new initiatives in the parish and restarting others. Currently we have Children’s
+Liturgy after the Sunday Mass at Sacred Heart Church and we meet for Tea and Coffee after mass on
+alternate Sundays in St Cuthbert’s Church. We are forming a Bereavement Support Group to
+provide ongoing help those who have lost a loved one.
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About our Parish -->
+
+<!-- Mass Times -->
+<div class="container" style="min-width: 100%; background-color: #f2f2f2;">
+    <div class="container bg-white">
+        <div id="row massTimesContainer px-5" style="background-color: #f2f2f2;">
+            <div class="row pt-4" style="background-color: #f2f2f2">
+                <div class="massTimesTitle px-5 col-12 mb-2">
+                    Join us for Holy Mass
+                </div>
+
+                <!-- Sacred Heart -->
+                <div class="sacredHeartTimes container px-md-5">
+                    <div class="churchTitle pt-2 pb-4">
+                        Sacred Heart
+                    </div>
+                    {% for key, values in sacred_heart_mass_times.items %}
+
+                        <div class="row">
+                            <div class="col-5 ps-3 overflow-hidden">
+                                <p class="dayLabel w-100">{{ key }}</p>
+                            </div>
+                            
+                            <div class="col-7">
+                                {% for time, comment in values %}
+                                    <div class="timeLabel">{{ time }}</div>
+                                    <div class="commentLabel mb-2">{{ comment }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+
+                <!-- St Cuthberts -->
+                <div class="stCuthbertsTimes container mt-md-2 px-md-5">
+                    <div class="churchTitle pt-2 pb-4">
+                        St Cuthberts
+                    </div>
+                    {% for key, values in st_cuthberts_mass_times.items %}
+
+                        <div class="row">
+                            <div class="col-5 ps-3 overflow-hidden">
+                                <p class="dayLabel w-100">{{ key }}</p>
+                            </div>
+                            
+                            <div class="col-7">
+                                {% for time, comment in values %}
+                                    <div class="timeLabel">{{ time }}</div>
+                                    <div class="commentLabel mb-2">{{ comment }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+
+            </div>
+                {% comment %}
+                {% for key, values in mass_times.items %}
+                    <p>{{ key }}</p>
+                    {% for time, comment in values %}
+                        <p>{{ time }}, {{ comment }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% endcomment %}
+
+
+        </div>
+    
+</div>
+
+<!-- Priest Messages -->
+<div class="container">
+    
+
+    <div class="container px-4 px-md-0">
+        <div class="priestMessageTitle mt-4">
+            Messages from Fr Giorgio
+        </div>
+        <div class="d-flex w-100 justify-content-center align-items-center">
+            <div class="fb-page m-auto" data-href="https://www.facebook.com/StEdwardTheConfessorWigan/" data-tabs="timeline" data-width="2000" data-height="700" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/StEdwardTheConfessorWigan/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/StEdwardTheConfessorWigan/">The Parish of St Edward the Confessor Wigan</a></blockquote></div>
+        </div>
+        {% comment %}
+        <div class="innerMessageContainer d-flex flex-row flex-wrap justify-content-start" id="allMessageContainer">
+                    
+            {% for post in priest_messages %}
+
+                {% if post.PhotoValue == 0 %}
+                    <div class="priestMessageContainer hoverImage shadow mt-4 mx-4 px-2" id="{{ post.value }}" >
+                        <div class="priestMessageTextContainer">
+                            <h1 class="pt-2">{{ post.Title }}</h1>
+                            <h2 class="mt-2">{{ post.Message }}</h2>
+                            <h3>{{ post.DateTime }}</h3>
+                        </div>
+
+                    </div>
+
+                {% else %}
+                            
+                    <div class="priestMessageContainer hoverImage w-100 shadow mt-4" id="{{ post.value }}" data-bs-toggle="modal" data-bs-target="#modal{{ post.value }}">
+                        {% if post.PhotoValue == 1 %}
+                            <div class="priestMessageImage mt-2" style="background-image: url('{{ post.Images.0 }}');"></div>
+                        
+                        {% else %}
+                        <a class="d-flex mx-auto imageHover imageLayerImage" style="background-image: linear-gradient(to right, rgba(255,255,255,0.8) 20%,
+                        rgba(255,255,255,0.8)), url('{{ post.Images.0 }}'); height: 240px;" >
+                        
+                            <div class="flex-grow-1 justify-content-center align-items-center d-flex imageLayerText"> {{ post.PhotoValue }} Images </div>
+
+                        </a>
+
+                            
+
+                        {% endif %}
+                        
+                        <div class="priestMessageTextContainer px-2">
+                            <h1 class="pt-2">{{ post.Title }}</h1>
+                            <h2 class="mt-2">{{ post.Message }}</h2>
+                            <h3>{{ post.DateTime }}</h3>
+                        </div>
+
+                    </div>
+
+                    
+
+                {% endif %}
+
+                <div id="modal{{ post.value }}" class="modal">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{ post.Title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex align-items-center justify-content-center">
+
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+        
+                                        {% for image in post.Images %}
+                                        <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                            <div class="swiper-img" style="background-image: url('{{ image }}');"></div>
+                                        </div>
+                                        {% endfor %}
+        
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="modal fade" id="modal{{ post.value }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ post.Title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="swiper mySwiper" style="height: 240px;">
+                                <div class="swiper-wrapper">
+
+                                    {% for image in post.Images %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image }}" alt="">
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> -->
+                
+            {% endfor %}
+        
+
+        </div>
+        {% endcomment %}
+    </div>
+</div>
+
+
+
+{% include "footer.html" %}
+
+
+{% endblock %}

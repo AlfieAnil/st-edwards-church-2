@@ -1,0 +1,23 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/contact-us.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block windowTitle %}Upload Newsletter{% endblock windowTitle %}
+
+
+{% block content %}
+<div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.pdf_file }}
+
+        <button class="form-control btn btn-primary mt-4" type="submit">Submit</button>
+
+        <form action=""></form>
+    </form>
+</div>
+{% endblock %}

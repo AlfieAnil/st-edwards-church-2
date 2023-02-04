@@ -1,0 +1,14 @@
+.baptism-wrapper {
+    border: 1px solid black;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 16px;
+    color: red;
+}
+
+.form-field {
+    font-weight: 400;
+    font-size: 20px;
+}

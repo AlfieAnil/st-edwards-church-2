@@ -1,0 +1,185 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/manage-message.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Manage Priest Message{% endblock %}
+
+
+
+{% block content %}
+<div class="createPriestMessageContainer container">
+    <div class="sectionTitle my-4">Create Priest Message</div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="postTitle">
+            <div class="entryPrompt">Title:</div>
+            <input type="text" name="Title" class="form-control">
+        </div>
+
+        <div class="postMessage">
+            <div class="entryPrompt">Message: </div>
+            <textarea name="Message" class="form-control" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="postImages">
+            <div class="entryPrompt">Upload Images:</div>
+            <input name="images" type="file" multiple class="form-control-file">
+        </div>
+        <input type="hidden" value="create" name="action_type">
+        <button class="btn mt-3 w-100 btn-primary" type="submit">Create Post</button>
+    </form>
+    
+
+</div>
+
+<hr>
+
+<div class="manageContainer container my-4">
+    <div class="container">
+        <div class="container px-4 px-md-0">
+            <div class="priestMessageTitle mt-4">
+                Messages from Fr Giorgio
+            </div>
+            <div class="innerMessageContainer d-flex flex-row flex-wrap justify-content-start" id="allMessageContainer">
+                
+                {% for post in priest_messages %}
+    
+                    {% if post.PhotoValue == 0 %}
+                        <div class="priestMessageContainer hoverImage shadow mt-4 me-4 px-2" id="{{ post.value }}" >
+                            <div class="priestMessageTextContainer">
+                                <h1 class="pt-2">{{ post.Title }}</h1>
+                                <h2 class="mt-2">{{ post.Message }}</h2>
+                                <h3>{{ post.DateTime }}</h3>
+                            </div>
+                            
+                            <div class="button edit" id="edit-{{ post.PostID }}" href="{% url 'edit-post' postid=post.value %}">Edit</div>
+                            <a class="button delete mb-4" data-bs-toggle="modal" data-bs-target="#confirm-delete-{{ post.value }}">Delete</a>
+                        </div>
+    
+                    {% else %}
+                                
+                        <div class="priestMessageContainer hoverImage w-100 shadow mt-4" id="{{ post.value }}" data-bs-toggle="modal" data-bs-target="#modal{{ post.value }}">
+                            {% if post.PhotoValue == 1 %}
+                                <div class="priestMessageImage mt-2" style="background-image: url('{{ post.Images.0 }}');"></div>
+                            
+                            {% else %}
+                            <a class="d-flex mx-auto imageHover imageLayerImage" style="background-image: linear-gradient(to right, rgba(255,255,255,0.8) 20%,
+                            rgba(255,255,255,0.8)), url('{{ post.Images.0 }}'); height: 240px;" >
+                            
+                                <div class="flex-grow-1 justify-content-center align-items-center d-flex imageLayerText"> {{ post.PhotoValue }} Images </div>
+    
+                            </a>
+    
+                                
+    
+                            {% endif %}
+                            
+                            <div class="priestMessageTextContainer px-2">
+                                <h1 class="pt-2">{{ post.Title }}</h1>
+                                <h2 class="mt-2">{{ post.Message }}</h2>
+                                <h3>{{ post.DateTime }}</h3>
+                            </div>
+                            
+                            <div class="actionButtons mb-auto">
+                                <a class="button edit" href="{% url 'edit-post' postid=post.value %}">Edit</a>
+                                <a class="button delete mb-4" data-bs-toggle="modal" data-bs-target="#confirm-delete-{{ post.value }}">Delete</a>
+                            </div>
+    
+                        </div>
+    
+                        
+    
+                    {% endif %}
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="confirm-delete-{{ post.value }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    Delete Priest Message
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this Post?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="delete" name="action_type">
+                                        <input type="hidden" value="{{ post.value }}" name="post_delete_id">
+                                        <button class='btn btn-danger' type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="modal{{ post.value }}" class="modal">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">{{ post.Title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex align-items-center justify-content-center">
+    
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
+            
+                                            {% for image in post.Images %}
+                                            <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                                <div class="swiper-img" style="background-image: url('{{ image }}');"></div>
+                                            </div>
+                                            {% endfor %}
+            
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            
+    
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Priest Message</title>
+</head>
+<body>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="Title">
+        <hr>
+
+        <input type="text" name="Message">
+
+        <hr>
+
+        <input name="images" type="file" multiple class="form-control-file">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> -->

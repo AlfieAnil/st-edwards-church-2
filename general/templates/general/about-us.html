@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/about-us.css' %}">
+{% endblock %}
+
+{% block windowTitle %}About us{% endblock %}
+
+{% block navbar %}
+<div class="navColorContainer">
+    {% include "navbar.html" %}
+
+    <div class="container d-md-none">
+        <div class="row" style="margin: 0px 32px;">
+            <div class="col-12">
+                <div class="aboutUsHeader">
+                    <h1>About us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    <div class="navColorContainer d-none d-md-block">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-start">
+                <div class="aboutUsHeader col-9 d-flex flex-column justify-content-center">
+                    <div>
+                        <h1>About us</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container aboutUsContent mt-4">
+        <div class="ourClergy">
+            {% for clergy in clergy_list %}
+                <div class="row d-md-none">
+                    <div class="col-12">
+                        <div class="clergyContainer shadow mb-4">
+                            <div class="clergyImage">
+                                <!-- <img src="{%static 'static/img/baptism.jpeg'%}" alt=""> -->
+                                <img src="{{ clergy.clergyPicture.url }}" alt="">
+                            </div>
+
+                            <div class="px-4 py-2">
+                                <div class="clergyName">
+                                    {{ clergy.clergyName }}
+                                </div>
+
+                                <div class="clergyRole">
+                                    {{ clergy.clergyRole }}
+                                </div>
+
+                                <div class="clergyDescription mt-2">
+                                    {{ clergy.clergyDescription }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop -->
+                {% if forloop.counter|divisibleby:2 == 0 %}
+                    <div class="row d-none d-md-flex justify-content-end align-items-center" style="margin-bottom: 50px; margin-right: 64px; margin-left: 64px;">
+                        <div class="col-6">
+                            <div class="clergyName">
+                                {{ clergy.clergyName }}
+                            </div>
+
+                            <div class="clergyRole">
+                                {{ clergy.clergyRole }}
+                            </div>
+
+                            <div class="clergyDescription mt-2">
+                                {{ clergy.clergyDescription }} 
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center">
+                            <div class="imageBox">
+                                <div class="clergyImage">
+                                    <img src="{{ clergy.clergyPicture.url }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="clergySeparator"></div>
+                        </div>
+                        
+                    </div>
+
+                {% else %}
+
+                    <div class="row d-none d-md-flex justify-content-start align-items-center" style="margin-bottom: 50px;">
+                        <div class="col-6 order-2">
+                            <div class="clergyName">
+                                {{ clergy.clergyName }}
+                            </div>
+
+                            <div class="clergyRole">
+                                {{ clergy.clergyRole }}
+                            </div>
+
+                            <div class="clergyDescription mt-2">
+                                {{ clergy.clergyDescription }} 
+                            </div>
+                        </div>
+
+                        <div class="col-4 order-1 d-flex justify-content-center align-items-center">
+                            <div class="imageBox">
+                                <div class="clergyImage imageReverse">
+                                    <img src="{{ clergy.clergyPicture.url }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-100 d-flex justify-content-center order-3">
+                            <div class="clergySeparator"></div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</div>
+{% endblock %}

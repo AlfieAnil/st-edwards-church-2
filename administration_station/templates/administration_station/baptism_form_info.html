@@ -1,0 +1,338 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/view_baptism_info.css' %}">
+{% endblock %}
+
+{% block windowTitle %}View Baptism Details{% endblock %}
+
+{% block content %}
+<hr class="mt-4">
+
+
+
+<div style="font-weight: 600; font-size: 2rem;" class="mb-3">BAPTISMAL CHILD INFORMATION</div>
+    <div class="detail">
+        <span class="prompt">Baptismal Name: </span>
+        <span>{{ baptism.child_baptism_name }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Child Surname: </span>
+        <span>{{ baptism.child_surname }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Child DOB: </span>
+        <span>{{ baptism.child_dob }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Practicing Church: </span>
+        <span>{{ baptism.practicing_church_time }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Address: </span>
+        <span>{{ baptism.address }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Postcode: </span>
+        <span>{{ baptism.postcode }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Telephone Number: </span>
+        <span>{{ baptism.telephone_number }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Email: </span>
+        <span>{{ baptism.email }}</span>
+    </div>
+
+    <hr class="mt-4">
+    <div style="font-weight: 600; font-size: 2rem;" class="mb-3">FATHER'S INFORMATION</div>
+
+    <div class="detail">
+        <span class="prompt">Father's Name: </span>
+        <span>{{ baptism.father_name }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father DOB: </span>
+        <span>{{ baptism.father_dob }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father's Religion: </span>
+        <span>{{ baptism.religion }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Was the Father Baptised in this Parish: </span>
+        <span>{{ baptism.child_dob }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father's Date of Baptism: </span>
+        <span>{{ baptism.father_date_baptism }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father's church of Baptism: </span>
+        <span>{{ baptism.father_baptism_church }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father's Date of Confirmation: </span>
+        <span>{{ baptism.father_date_confirmation }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Father's church of Confirmation: </span>
+        <span>{{ baptism.father_confirmation_church }}</span>
+    </div>
+
+    <hr class="mt-4">
+    <div style="font-weight: 600; font-size: 2rem;" class="mb-3">MOTHER'S INFORMATION</div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Name: </span>
+        <span>{{ baptism.mother_name }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's DOB: </span>
+        <span>{{ baptism.mother_dob }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Religion: </span>
+        <span>{{ baptism.mother_religion }}</span>
+    </div>
+    
+    <div class="detail">
+        <span class="prompt">Was mother baptised in this Parish: </span>
+        <span>{{ baptism.mother_baptised_in_parish }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Date of Baptism: </span>
+        <span>{{ baptism.mother_date_baptism }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Church of Baptism: </span>
+        <span>{{ baptism.mother_baptism_church }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Date of Confirmation: </span>
+        <span>{{ baptism.mother_confirmation_date }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's church of Confirmation: </span>
+        <span>{{ baptism.mother_confirmation_church }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Mother's Maidan Name: </span>
+        <span>{{ baptism.mother_maidan_name }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Parent's Marital Status: </span>
+        <span>{{ baptism.parents_marital_status }}</span>
+    </div>
+
+    <hr class="mt-4">
+    <div style="font-weight: 600; font-size: 2rem;" class="mb-3">GODPARENT'S INFORMATION</div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Name: </span>
+        <span>{{ baptism.godparent_name_1 }}</span>
+    </div>
+    
+    <div class="detail">
+        <span class="prompt">First Godparent's Religion: </span>
+        <span>{{ baptism.godparent_religion_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Address: </span>
+        <span>{{ baptism.godparent_address_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Postcode: </span>
+        <span>{{ baptism.godparent_postcode_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Telephone: </span>
+        <span>{{ baptism.godparent_telephone_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Date of Baptism: </span>
+        <span>{{ baptism.godparent_dob_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's church of Baptism: </span>
+        <span>{{ baptism.godparent_baptism_church_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Date of Confirmation: </span>
+        <span>{{ baptism.godparent_confirmation_date_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's church of Confirmation: </span>
+        <span>{{ baptism.godparent_confirmation_church_1 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Godparent's Practicing Church: </span>
+        <span>{{ baptism.godparent_practicing_1 }}</span>
+    </div>
+
+    <!-- second godparent -->
+    <div class="detail">
+        <span class="prompt">Second Godparent's Name: </span>
+        <span>{{ baptism.godparent_name_2 }}</span>
+    </div>
+    
+    <div class="detail">
+        <span class="prompt">Second Godparent's Religion: </span>
+        <span>{{ baptism.godparent_religion_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Address: </span>
+        <span>{{ baptism.godparent_address_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Postcode: </span>
+        <span>{{ baptism.godparent_postcode_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Telephone: </span>
+        <span>{{ baptism.godparent_telephone_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Date of Baptism: </span>
+        <span>{{ baptism.godparent_dob_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's church of Baptism: </span>
+        <span>{{ baptism.godparent_baptism_church_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Date of Confirmation: </span>
+        <span>{{ baptism.godparent_confirmation_date_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's church of Confirmation: </span>
+        <span>{{ baptism.godparent_confirmation_church_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Godparent's Practicing Church: </span>
+        <span>{{ baptism.godparent_practicing_2 }}</span>
+    </div>
+
+
+
+    <hr class="mt-4">
+    <div style="font-weight: 600; font-size: 2rem;" class="mb-3">CHRISTIAN WITNESS INFORMATION</div>
+
+    <div class="detail">
+        <span class="prompt">First Christian Witness' Name: </span>
+        <span>{{ baptism.cw_name }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Christian Witness' Gender: </span>
+        <span>{{ baptism.cw_gender }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Christian Witness' Religion: </span>
+        <span>{{ baptism.cw_religion }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Christian Witness' Practicing church: </span>
+        <span>{{ baptism.cw_practicing }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Christian Witness' Name: </span>
+        <span>{{ baptism.cw_name_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Christian Witness' Gender: </span>
+        <span>{{ baptism.cw_gender_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Christian Witness' Religion: </span>
+        <span>{{ baptism.cw_religion_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Second Christian Witness' Practicing church: </span>
+        <span>{{ baptism.cw_practicing_2 }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">First Child (Y/N): </span>
+        <span>{{ baptism.first_child }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Course Attended (Y/N): </span>
+        <span>{{ baptism.course_attended }}</span>
+    </div>
+
+    <div class="detail">
+        <span class="prompt">Church of Course Attendance: </span>
+        <span>{{ baptism.course_church }}</span>
+    </div>
+    <hr class="mt-4">
+    <div style="font-weight: 600; font-size: 2rem;" class="mb-3">OTHER CHILDREN INFORMATION</div>
+    {% for child in children %}
+
+    <div class="detail">
+        <span class="prompt">Child {{ forloop.counter }} Name: </span>
+        <span>{{ child.child_name }}</span>
+        <div></div>
+        <span class="prompt">Child {{ forloop.counter }} DOB: </span>
+        <span>{{ child.child_dob }}</span>
+        <div></div>
+        <span class="prompt">Child {{ forloop.counter }} Date of Baptism: </span>
+        <span>{{ child.child_date_baptism }}</span>
+        <div></div>
+        <span class="prompt">Child {{ forloop.counter }} School: </span>
+        <span>{{ child.child_school }}</span>
+    </div>
+    {% endfor %}
+
+    <button class="btn my-4 btn-primary" onclick="window.print(); return false;">Print</button>
+    
+
+
+{% endblock %}

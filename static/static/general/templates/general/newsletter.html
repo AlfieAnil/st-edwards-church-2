@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/newsletter.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Parish Newsletter{% endblock %}
+
+{% block navbar %}
+<div class="navWholeContainer">
+    <img src="{%static 'static/img/Newsletter.jpeg'%}" class="navImageContainer d-md-none">
+    {% include 'navbar.html' %}
+    <div id="navContent" class="d-md-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">Newsletter</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="background-color: #f2f2f2">
+    <div class="navWholeContainer d-none d-md-block">
+        <img src="{% static 'static/img/Newsletter.jpeg' %}" class="navImageContainer" alt="">
+        <div id="navContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 parishHubTitle">
+                        <h1>Newsletter</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="newsletterContent container d-flex flex-column justify-content-center align-items-center">
+            <embed src="{{ newsletter_path }}#toolbar=0&navpanes=0&scrollbar=0" width="100%" class="d-none d-md-block">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mt-4">Download Newsletter Here</button>
+            </form>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

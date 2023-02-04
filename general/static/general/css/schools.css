@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+.navWholeContainer {
+    position: relative;
+    height: 240px;
+}
+
+.navImageContainer {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    top: 0px; 
+    left: 0px;
+    opacity: 0.35;
+}
+
+.navWholeContainer #navbar {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+}
+
+.navWholeContainer #navContent {
+    position: absolute;
+    bottom: 0px;
+    font-family: 'lato';
+    font-size: 32px;
+    color: #080808;
+    font-weight: 700;
+    margin: 32px;
+}
+
+.schoolContainer {
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+.conSeparator {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 50%;
+}
+
+.schoolName {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.schoolDescription {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.schoolSocials {
+    width: 250px;
+}
+
+.schoolLogo img {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    height: 80px;
+}
+
+
+@media(min-width: 768px) {
+    .navWholeContainer {
+        min-height: 288px;
+    }
+
+    .schoolsTitle h1{
+        font-weight: 700;
+    }
+
+    .schoolsContent {
+        height: 100vh;
+    }
+
+    .schoolContainer {
+        overflow: hidden;
+    }
+
+    .schoolLogo {
+        margin-left: 20px;
+        object-fit: contain;
+    }
+
+    .schoolLogo img {
+        object-fit: contain;
+        height: 140px;
+    }
+
+    .complimentText {
+        font-size: 18px;
+        font-weight: 400;
+        color: black;
+    }
+
+    .complimentText a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    .conSeparator {
+        /* margin-top: 10px;
+        margin-bottom: 10px; */
+        border: 1px solid black;
+        height: 50%;
+        width: 1px;
+    }
+
+    .schoolSocials {
+        width: 75%;
+        margin-right: auto;
+    }
+
+}
+

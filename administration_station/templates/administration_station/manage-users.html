@@ -1,0 +1,29 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/manage-users.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Mange Users{% endblock %}
+
+{% block content %}
+
+{% for user in users %}
+    <div class="userContainer w-100 border">
+        <div class="detailContainer">
+            <div>Username: {{ user.username }}</div>
+            <div>Email: {{ user.email }}</div>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{ user.id }}" name="user-id">
+                <button class="btn btn-danger form-control" style="width: 15rem">Delete User</button>
+            </form>
+            
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,54 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+
+
+.contactContainer {
+    border: 2px solid black;
+    background-color: #f2f2f2;
+}
+
+.viewButton {
+    width: 100%;
+    background-color: blue;
+    height: 50px;
+}
+
+.deleteButton {
+    width: 100%;
+    background-color: red;
+    height: 50px;
+}
+
+.viewButton svg {
+    height: 30px;
+}
+
+.deleteButton svg {
+    height: 30px;
+}
+
+
+@media(min-width: 768px){
+    .viewButton {
+        background-color: blue; 
+        width: 200px; 
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .deleteButton {
+        background-color: red; 
+        width: 200px; 
+        height: 100%;
+        cursor: pointer;
+    }
+
+}

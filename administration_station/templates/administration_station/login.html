@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <style>
+        .loginBorder {
+            height: 800px;
+            width: 500px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="w-100 d-flex justify-content-center align-items-center" style="height: 100vh">
+        
+        <div class="loginBorder px-2">
+            <h1>St Edward the Confessor Login</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="username..." class="form-control w-100">
+        
+                <input type="password" name="password" placeholder="password..." class="form-control mt-1   w-100">
+        
+                <input type="submit" class="btn btn-primary mt-4 login_btn w-100" value="Login">    
+            </form>
+            {% for message in messages %}  
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username..." class="form-control">
+
+        <input type="password" name="password" placeholder="password..." class="form-control">
+
+        <input type="submit" class="btn login_btn" value="Login">    
+    </form> -->
+    
+    
+
+</body>
+</html>

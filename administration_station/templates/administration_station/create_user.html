@@ -1,0 +1,75 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- <div class="w-100 d-flex justify-content-center align-items-center" style="height: 100vh">
+        
+        <div class="loginBorder px-2">
+            <h1>St Edward the Confessor Create User</h1>
+            
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="username..." class="form-control w-100">
+        
+                <input type="password" name="password" placeholder="password..." class="form-control mt-1   w-100">
+        
+                <input type="submit" class="btn btn-primary mt-4 login_btn w-100" value="Login">    
+            </form>
+          
+            {% for message in messages %}  
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        </div>
+
+    </div> -->
+
+    <div class="w-100 d-flex justify-content-center align-items-center" style="height: 100vh">
+        
+        <div class="loginBorder px-2">
+            <h1>St Edward the Confessor Create User</h1>
+            
+            <form method="POST" action="">
+                {% csrf_token %}
+        
+                <div class="my-2">
+                    <div>Username</div>
+                    {{form.username}}
+                </div>
+                
+                <div class="my-2">
+                    <div>Email</div>
+                    {{form.email}}
+                </div>
+
+                <div class="my-2">
+                    <div>Password</div>
+                    {{form.password1}}
+                </div>
+                
+                <div class="my-2">
+                    <div>Confirm Password</div>
+                    {{form.password2}}
+                </div>
+                
+                <div>Access Level</div>
+                <select name="administration-level" class="form-control" id="cars">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Editor">Editor</option>
+                    <option value="Viewer">Viewer</option>
+                  </select>
+        
+                  <input type="submit" class="login_btn form-control btn btn-primary" value="Register Account">
+            </form>
+        
+          
+            {% for field, error in form.errors.items %} 
+
+                <p style="color: red;">{{ field }}{{ error }}</p>
+                
+            {% endfor %}
+        </div>
+
+    </div>
+    
+
+{% endblock %}

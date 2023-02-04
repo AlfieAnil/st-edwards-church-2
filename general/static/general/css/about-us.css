@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+.aboutUsContent {
+    position: relative;
+    padding: 0px 32px;
+    background-color: #f2f2f2;
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
+    font-family: 'lato';
+    scroll-behavior: smooth;
+    z-index: 10;
+}
+
+.navColorContainer {
+    background-color: #B31705;
+}
+
+.aboutUsHeader {
+    font-family: 'lato';
+    margin: 32px 0px;
+}
+
+.aboutUsHeader h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    word-spacing: 0%;
+}
+
+.aboutUsHeader h2 {
+    font-size: 18px;
+    color: #c2adad;
+}
+
+.clergyContainer {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.clergyImage {
+    height: 180px;
+    overflow: hidden;
+}
+
+.clergyImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clergyName {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.clergyRole {
+    font-size: 16px;
+    color: #505050;
+}
+
+.clergyDescription {
+    font-size: 18px;
+}
+
+@media(min-width: 768px){
+    .aboutUsContent {
+        min-height: 100vh;
+    }
+
+    .aboutUsHeader {
+        margin: 0px 0px;
+        height: 288px;
+    }
+
+    .aboutUsHeader h1 {
+        font-size: 48px;
+    }
+
+    .aboutUsHeader h2 {
+        font-size: 24px;;
+    }
+
+    .imageBox {
+        height: 240px;
+        width: 240px;
+        background: #D9D9D9;
+    }
+
+    .clergyImage {
+        height: 240px;
+        width: 240px;
+        background-color: #505050;
+        overflow: visible;
+    }
+
+    .clergyImage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        background-color: white;
+        transform: translate(-25px, 25px);
+    }
+
+    .imageReverse img{
+        transform: translate(25px, 25px);
+    }
+
+    .clergySeparator {
+        margin-top: 75px;
+        /* height: 10px; */
+        width: 50%;
+        border: 1px solid black;
+    }
+}

@@ -1,0 +1,65 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/baptism-forms.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Baptism Form Responses{% endblock %}
+
+{% block content %}
+<div class="w-100">
+    {% for baptism in baptism_responses %}
+        
+        <div class="baptism-wrapper d-flex align-items-center">
+            <div class="w-50 p-4">
+                <div class="form-label" style="line-height: 1;">Child Surname</div>
+                <div class="form-field" style="line-height: 1;">{{ baptism.child_surname }}</div>
+
+                <div class="form-label mt-4" style="line-height: 1;">
+                    Child Baptism Name
+                </div>
+                <div class="form-field" style="line-height: 1;">
+                    {{ baptism.child_baptism_name }}
+                </div>
+            </div>
+
+            <div class="buttons h-100 d-flex">
+                <!-- <form action="" method="POST">
+                    {% csrf_token %}
+
+                    <button class="btn btn-danger">Delete</button>
+                    
+                </form> -->
+
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-{{ baptism.id }}">Delete</button>
+
+                <div class="modal fade" id="confirm-delete-{{ baptism.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                Delete Contact Response
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this form?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ baptism.id }}" name="baptism_form_id">
+                                    <!-- <a class="btn btn-danger btn-ok">Delete</a> -->
+                                    <button class='btn btn-danger' type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{% url 'display-baptism-info' baptism.id %}" class="btn btn-primary mx-4">Print</a>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+{% endblock %}

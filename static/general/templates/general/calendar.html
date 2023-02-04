@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/calendar.css' %}">
+{% endblock styling %}
+
+{% block windowTitle %} Calendar {% endblock %}
+
+{% block navbar %}
+<div class="navColorContainer">
+    {% include "navbar.html" %}
+
+    <div class="container d-md-none">
+        <div class="row" style="margin: 0px 32px;">
+            <div class="col-12">
+                <div class="contactHeader">
+                    <h1>Calendar</h1>
+                    <h2>See what's happening in the Parish...</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    <div class="navColorContainer d-none d-md-block">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-start">
+                <div class="contactHeader col-9 d-flex flex-column justify-content-center">
+                    <div>
+                        <h1>Calendar</h1>
+                        <h2>See what's happening in the Parish...</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="calendarContent ">
+        {% for calendar_event in calendar_items %}
+            <div class="calendarEvent">
+                <div class="container"> 
+                    <div class="row p-2">
+                        
+                        <div class="eventTitle">
+                            {{ calendar_event.Title }}
+                        </div>
+                        
+                        <div class="eventDetails mt-2" id="event-{{ calendar_event.id }}" style="display: none;">
+                            {{ calendar_event.Details }}
+                        </div>
+
+                        <div class="more_info mt-4" id="event-more-{{ calendar_event.id }}" onclick="show(document.getElementById('event-{{ calendar_event.id }}'), document.getElementById('event-more-{{ calendar_event.id }}'))">
+                            More info
+                        </div>
+
+                        <div class="DateTime">
+                            <div class="Day me-2">
+                                Date: {{ calendar_event.Day|date:"d M Y" }}
+                            </div>
+
+                            <div class="Time">
+                                Time: {{ calendar_event.Time }}
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        {% endfor %}
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}
+
+{% block script %}
+<script>
+    function show(x, y){
+        console.log("Executing Function");
+        console.log(x.style.display);
+        if(x.style.display === "block"){
+            x.style.display = "none";
+            y.innerHTML = "More info";
+        } else {
+            x.style.display = "block";
+            y.innerHTML = "Less info";
+        }
+    }
+</script>
+{% endblock %}

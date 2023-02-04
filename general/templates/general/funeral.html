@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/sacrament.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Funeral{% endblock %}
+
+{% block navbar %}
+<div class="navWholeContainer">
+    <img src="{%static 'static/img/Funeral.jpeg'%}" class="navImageContainer d-md-none">
+    {% include 'navbar.html' %}
+    <div id="navContent" class="d-md-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">Funeral</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div style="background-color: #f2f2f2">
+    <div class="navWholeContainer d-none d-md-block">
+        <img src="{% static 'static/img/Funeral.jpeg' %}" class="navImageContainer" alt="">
+        <div id="navContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 sacramentTitle">
+                        <h1>Funeral</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sacramentContent container mt-4">
+            {{ funeral.SacramentDescription | safe }}
+    </div>
+    {% include 'footer.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'manage-base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'administration_station/css/edit-post.css' %}">
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="title">
+        <h4 class="px-2">Title</h4>
+        {{ form.Title }}
+    </div>
+    
+    <div class="message">
+        <h4 class="px-2">Message</h4>
+        {{ form.Message }}
+    </div>
+
+    <div class="postImages">
+        <div class="entryPrompt"><h4>Upload Images:</h4></div>
+        <input name="images" type="file" multiple class="form-control-file">
+    </div>
+
+    <h4 class="pt-2">Edit Images</h4>
+    <div class="photo_list d-md-flex">
+        
+        {% for photo in all_photos %}
+            <div class="d-flex flex-column imagesContainer pt-2 me-4">
+                <img src="{{ photo.image.url }}" alt="">
+                <input type="hidden" value="{{ photo.id }}" name="photo-delete">
+                <input type="hidden" value="delete-photo" name="submit_type">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        {% endfor %}
+    </div>
+    <input type="hidden" name="submit_type" value="update-text">
+    <button class="btn btn-primary w-100 mt-4" type="submit">Submit</button>
+</form>
+{% endblock %}

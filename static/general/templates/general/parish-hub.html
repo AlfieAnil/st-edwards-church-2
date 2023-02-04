@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/parish-hub.css' %}">
+{% endblock styling %}
+
+{% block windowTitle %} Parish Hub {% endblock %}
+
+{% block navbar %}
+<div class="navWholeContainer">
+    <img src="{%static 'static/img/ParishHub.jpeg'%}" class="navImageContainer d-md-none">
+    {% include 'navbar.html' %}
+    <div id="navContent" class="d-md-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">Parish Hub</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div style="background-color: #f2f2f2">
+    <div class="navWholeContainer d-none d-md-block">
+        <img src="{% static 'static/img/ParishHub.jpeg' %}" class="navImageContainer" alt="">
+        <div id="navContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 parishHubTitle">
+                        <h1>Parish Hub</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parishHubContent container mt-4">
+        <div class="row">
+            <div class="col-1 d-none d-md-block"></div>
+            <div class="col-12 col-md-10">
+                <div class="parishHubHeading">
+                    <h2>What is the Parish Hub</h2>
+                    <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui reiciendis laudantium asperiores hic quidem quod temporibus debitis labore dolorum accusamus. Aut adipisci ab repudiandae vitae velit similique, optio architecto nostrum.</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 hubTimesContainer px-4 py-2 mt-4">
+                <div class="timesHeading mb-2">Opening Times</div>
+                {% for daytime in hub_times %}
+                    <div class="row">
+                        <div class="dayLabel col-5">{{ daytime.Day }}</div>
+
+                        <div class="timeLabel col-7">{{ daytime.Time }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row mt-2 d-flex justify-content-center">
+            <a class="contactUsButton col-md-6 d-flex justify-content-center border p-2" href="{% url 'contact-us' %}">
+                <div class="d-flex flex-column">
+                    Contact us
+                </div>
+            </a>
+        </div>
+
+
+
+
+        {% comment %}
+        {% for daytime in hub_times %}
+            {{ daytime.Day }} - {{ daytime.Time }}
+        {% endfor %}
+        {% endcomment %}
+    </div>
+    {% include 'footer.html' %}
+</div>
+{% endblock %}

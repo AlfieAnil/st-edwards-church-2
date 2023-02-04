@@ -1,0 +1,1022 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styling %}
+<link rel="stylesheet" href="{% static 'general/css/sacrament.css' %}">
+{% endblock %}
+
+{% block windowTitle %}Baptism{% endblock %}
+
+{% block navbar %}
+<div class="navWholeContainer">
+    <img src="{%static 'static/img/baptism.jpeg'%}" class="navImageContainer d-md-none">
+    {% include 'navbar.html' %}
+    <div id="navContent" class="d-md-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">Baptism</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div style="background-color: #f2f2f2">
+    <div class="navWholeContainer d-none d-md-block">
+        <img src="{% static 'static/img/baptism.jpeg' %}" class="navImageContainer" alt="">
+        <div id="navContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 sacramentTitle">
+                        <h1>Baptism</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% for message in messages %}  
+                <div class="form-label" style="color: red;">{{ message }}</div>
+            {% endfor %}
+    </div>
+
+    <div class="sacramentContent container mt-4">
+            {{ baptism.SacramentDescription | safe }}
+
+            <div class="baptismForm mt-5">
+                <h3>Baptism Application Form</h3>
+                <form action="" id="whole-form" method="POST">
+                    {% csrf_token %}
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Which church do you attend and when?</div>
+                        {{ baptism_form.practicing_church_time }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Child Surname</div>
+                        {{ baptism_form.child_surname }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Child DOB</div>
+                        {{ baptism_form.child_dob }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Child Baptism Name</div>
+                        {{ baptism_form.child_baptism_name }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Address</div>
+                        {{ baptism_form.address }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Postcode</div>
+                            {{ baptism_form.postcode }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Email</div>
+                        {{ baptism_form.email }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Telephone Number</div>
+                        {{ baptism_form.telephone_number }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father Name</div>
+                        {{ baptism_form.father_name }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father DOB</div>
+                        {{ baptism_form.father_dob }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Was the Father Baptised?</div>
+                        <select name="father-baptised" id="father-baptised" onchange="fatherBaptised()">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father Religion</div>
+                        {{ baptism_form.father_religion }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Was the Father Baptised/Confirmed in this Parish?</div>
+                        {{ baptism_form.father_baptised_in_parish }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father's Date of Baptism</div>
+                        {{ baptism_form.father_date_baptism }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Which church was the Father Baptised in?</div>
+                        {{ baptism_form.father_baptism_church}}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father's Date of Confirmation</div>
+                        {{ baptism_form.father_date_confirmation}}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Father's Church of Confirmation</div>
+                        {{ baptism_form.father_confirmation_church }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Name</div>
+                        {{ baptism_form.mother_name }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's DOB</div>
+                        {{ baptism_form.mother_dob }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Was the Mother Baptised?</div>
+                        <select name="father-baptised" id="mother-baptised" onchange="motherBaptised()">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Religion</div>
+                        {{ baptism_form.mother_religion }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Was the Mother Baptised/Confirmed in this Parish?</div>
+                        {{ baptism_form.mother_baptised_in_parish }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Date of Baptism</div>
+                        {{ baptism_form.mother_date_baptism }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Church of Baptism</div>
+                        {{ baptism_form.mother_baptism_church }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Date of Confirmation</div>
+                        {{ baptism_form.mother_date_confirmation }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's church of Confirmation</div>
+                        {{ baptism_form.mother_confirmation_church }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Mother's Maidan Name</div>
+                        {{ baptism_form.mother_maidan_name }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Parent Marital Status
+                            <div class="compliment-text">The marital status of the parents is not a reason to refuse baptism. If parents are not married in the Catholic Church, they are invited to discuss this possibility with the priest</div>
+                        </div>
+                        {{ baptism_form.parents_marital_status }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Name</div>
+                        {{ baptism_form.godparent_name_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Address</div>
+                        {{ baptism_form.godparent_address_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Postcode</div>
+                        {{ baptism_form.godparent_postcode_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Telephone</div>
+                        {{ baptism_form.godparent_telephone_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Date of Baptism</div>
+                        {{ baptism_form.godparent_dob_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Church of Baptism</div>
+                        {{ baptism_form.godparent_baptism_church_1 }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's Date of Confirmation</div>
+                        {{ baptism_form.godparent_confirmation_date_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparent's church of Confirmation</div>
+                        {{ baptism_form.godparent_confirmation_church_1 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">1st Godparents Practicing Church</div>
+                        {{ baptism_form.godparent_practicing_1 }}
+                    </div>
+    
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Name</div>
+                        {{ baptism_form.godparent_name_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Address</div>
+                        {{ baptism_form.godparent_address_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Postcode</div>
+                        {{ baptism_form.godparent_postcode_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Telephone</div>
+                        {{ baptism_form.godparent_telephone_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Date of Baptism</div>
+                        {{ baptism_form.godparent_dob_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Church of Baptism</div>
+                        {{ baptism_form.godparent_baptism_church_2 }}
+                    </div>
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's Date of Confirmation</div>
+                        {{ baptism_form.godparent_confirmation_date_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparent's church of Confirmation</div>
+                        {{ baptism_form.godparent_confirmation_church_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">2nd Godparents Practicing Church</div>
+                        {{ baptism_form.godparent_practicing_2 }}
+                    </div>
+    
+                    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness Name</div>
+                        {{ baptism_form.cw_name }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness Gender</div>
+                        {{ baptism_form.cw_gender }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness Religion</div>
+                        {{ baptism_form.cw_religion }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness Practicing church</div>
+                        {{ baptism_form.cw_practicing }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness 2 Name</div>
+                        {{ baptism_form.cw_name_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness 2 Gender</div>
+                        {{ baptism_form.cw_gender_2}}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness 2 Religion</div>
+                        {{ baptism_form.cw_religion_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Christian Witness 2 Practicing church</div>
+                        {{ baptism_form.cw_practicing_2 }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Is this your first child?</div>
+                        {{ baptism_form.first_child }}
+                    </div>
+    
+                    <div class="entryWrapper" id="children-number" style="display: none;">
+                        <div class="form-label">How many other children do you have?</div>
+                        <input type="number" id='children-input' required name="children-number" class="form-control" onkeyup="addChildrenFields()">
+                    </div>
+    
+                    <div class="childrenInfoWrapper d-flex flex-column" id="childrenInfoWrapper">
+    
+                    </div>
+    
+    
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Have you attended any Baptism courses in the past?</div>
+                        {{ baptism_form.course_attended }}
+                    </div>
+    
+                    <div class="entryWrapper">
+                        <div class="form-label">Where did you attend the Baptism course?</div>
+                        {{ baptism_form.course_church }}
+                    </div>
+    
+    
+                    <button type="submit" id="submitBtn" onclick="onSubmit()" class="btn btn-primary">Submit</button>
+    
+    
+                    
+                </form>
+            </div>
+    </div>
+
+    <!-- <div class="container">
+        <div class="baptismForm">
+
+            <form action="" id="whole-form" method="POST">
+                {% csrf_token %}
+
+                <div class="entryWrapper">
+                    <div class="form-label">Which church do you attend and when?</div>
+                    {{ baptism_form.practicing_church_time }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Child Surname</div>
+                    {{ baptism_form.child_surname }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Child DOB</div>
+                    {{ baptism_form.child_dob }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Child Baptism Name</div>
+                    {{ baptism_form.child_baptism_name }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Address</div>
+                    {{ baptism_form.address }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Postcode</div>
+                        {{ baptism_form.postcode }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Email</div>
+                    {{ baptism_form.email }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Telephone Number</div>
+                    {{ baptism_form.telephone_number }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Father Name</div>
+                    {{ baptism_form.father_name }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Father DOB</div>
+                    {{ baptism_form.father_dob }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Was the Father Baptised?</div>
+                    <select name="father-baptised" id="father-baptised" onchange="fatherBaptised()">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Father Religion</div>
+                    {{ baptism_form.father_religion }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Was the Father Baptised/Confirmed in this Parish?</div>
+                    {{ baptism_form.father_baptised_in_parish }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Father's Date of Baptism</div>
+                    {{ baptism_form.father_date_baptism }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Which church was the Father Baptised in?</div>
+                    {{ baptism_form.father_baptism_church}}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Father's Date of Confirmation</div>
+                    {{ baptism_form.father_date_confirmation}}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Father's Church of Confirmation</div>
+                    {{ baptism_form.father_confirmation_church }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Name</div>
+                    {{ baptism_form.mother_name }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's DOB</div>
+                    {{ baptism_form.mother_dob }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Was the Mother Baptised?</div>
+                    <select name="father-baptised" id="mother-baptised" onchange="motherBaptised()">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Religion</div>
+                    {{ baptism_form.mother_religion }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Was the Mother Baptised/Confirmed in this Parish?</div>
+                    {{ baptism_form.mother_baptised_in_parish }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Date of Baptism</div>
+                    {{ baptism_form.mother_date_baptism }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Church of Baptism</div>
+                    {{ baptism_form.mother_baptism_church }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Date of Confirmation</div>
+                    {{ baptism_form.mother_date_confirmation }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's church of Confirmation</div>
+                    {{ baptism_form.mother_confirmation_church }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Mother's Maidan Name</div>
+                    {{ baptism_form.mother_maidan_name }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Parent Marital Status
+                        <div class="compliment-text">The marital status of the parents is not a reason to refuse baptism. If parents are not married in the Catholic Church, they are invited to discuss this possibility with the priest</div>
+                    </div>
+                    {{ baptism_form.parents_marital_status }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Name</div>
+                    {{ baptism_form.godparent_name_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Address</div>
+                    {{ baptism_form.godparent_address_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Postcode</div>
+                    {{ baptism_form.godparent_postcode_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Telephone</div>
+                    {{ baptism_form.godparent_telephone_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Date of Baptism</div>
+                    {{ baptism_form.godparent_dob_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Church of Baptism</div>
+                    {{ baptism_form.godparent_baptism_church_1 }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's Date of Confirmation</div>
+                    {{ baptism_form.godparent_confirmation_date_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparent's church of Confirmation</div>
+                    {{ baptism_form.godparent_confirmation_church_1 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">1st Godparents Practicing Church</div>
+                    {{ baptism_form.godparent_practicing_1 }}
+                </div>
+
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Name</div>
+                    {{ baptism_form.godparent_name_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Address</div>
+                    {{ baptism_form.godparent_address_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Postcode</div>
+                    {{ baptism_form.godparent_postcode_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Telephone</div>
+                    {{ baptism_form.godparent_telephone_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Date of Baptism</div>
+                    {{ baptism_form.godparent_dob_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Church of Baptism</div>
+                    {{ baptism_form.godparent_baptism_church_2 }}
+                </div>
+                
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's Date of Confirmation</div>
+                    {{ baptism_form.godparent_confirmation_date_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparent's church of Confirmation</div>
+                    {{ baptism_form.godparent_confirmation_church_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">2nd Godparents Practicing Church</div>
+                    {{ baptism_form.godparent_practicing_2 }}
+                </div>
+
+                
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness Name</div>
+                    {{ baptism_form.cw_name }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness Gender</div>
+                    {{ baptism_form.cw_gender }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness Religion</div>
+                    {{ baptism_form.cw_religion }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness Practicing church</div>
+                    {{ baptism_form.cw_practicing }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness 2 Name</div>
+                    {{ baptism_form.cw_name_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness 2 Gender</div>
+                    {{ baptism_form.cw_gender_2}}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness 2 Religion</div>
+                    {{ baptism_form.cw_religion_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Christian Witness 2 Practicing church</div>
+                    {{ baptism_form.cw_practicing_2 }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Is this your first child?</div>
+                    {{ baptism_form.first_child }}
+                </div>
+
+                <div class="entryWrapper" id="children-number" style="display: none;">
+                    <div class="form-label">How many other children do you have?</div>
+                    <input type="number" id='children-input' required name="children-number" class="form-control" onkeyup="addChildrenFields()">
+                </div>
+
+                <div class="childrenInfoWrapper d-flex flex-column" id="childrenInfoWrapper">
+
+                </div>
+
+
+
+                <div class="entryWrapper">
+                    <div class="form-label">Have you attended any Baptism courses in the past?</div>
+                    {{ baptism_form.course_attended }}
+                </div>
+
+                <div class="entryWrapper">
+                    <div class="form-label">Where did you attend the Baptism course?</div>
+                    {{ baptism_form.course_church }}
+                </div>
+
+
+                <button type="submit" id="submitBtn" onclick="onSubmit()" class="btn btn-primary">Submit</button>
+
+
+                
+            </form>
+        </div>
+    </div> -->
+    {% include 'footer.html' %}
+</div>
+
+{% block script %}
+<script>
+
+    window.onload = function() {
+        // making the first field required
+        document.getElementById('id_practicing_church_time').required = true;
+
+        var number_of_children = document.getElementById('children-input').value
+
+        if(number_of_children > 10){
+            alert("Please enter a value 10 or under");
+        } else{
+            console.log("starting");
+            var children_wrapper = document.getElementById('childrenInfoWrapper');
+            children_wrapper.innerHTML = '';
+            for (var i=0; i<number_of_children; i++){
+                // Name Input
+                children_wrapper.appendChild(document.createTextNode("Child "+ (i+1)));
+                var input = document.createElement("input");
+                input.classList.add('form-control', "child-name-"+(i+1));
+                input.type = "text";
+                input.name = "child-name-"+(i+1);
+                input.placeholder = "Child " + (i+1) + " name";
+                children_wrapper.appendChild(input);
+
+                // Dob Input
+                children_wrapper.appendChild(document.createTextNode("Child " + (i+1) + " DOB"));
+                var dob_input = document.createElement("input");
+                dob_input.classList.add('form-control');
+                dob_input.type = "date";
+                dob_input.name = "child-dob-"+(i+1);
+                dob_input.setAttribute('id', "child-dob-"+(i+1));
+                dob_input.placeholder = "10/10/2022";
+                children_wrapper.appendChild(dob_input);
+
+                // Date of Baptism
+                children_wrapper.appendChild(document.createTextNode("Child " + (i+1) + " Date of Baptism"));
+                var baptismd_input = document.createElement("input");
+                baptismd_input.classList.add('form-control');
+                baptismd_input.type = "date";
+                baptismd_input.name = "child-baptism-" + (i+1);
+                baptismd_input.setAttribute('id', "child-baptism-" + (i+1));
+                baptismd_input.placeholder = "Date of Baptism";
+                children_wrapper.appendChild(baptismd_input);
+
+                // Child School
+                children_wrapper.appendChild(document.createTextNode("School/Nursery of Child " + (i+1)));
+                var school_input = document.createElement("input");
+                school_input.classList.add('form-control', 'mb-4');
+                school_input.type = "text";
+                school_input.name = "child-school-" + (i+1);
+                school_input.setAttribute('id', "child-school-" + (i+1));
+                school_input.placeholder = "School of Child "+ (i+1);
+                children_wrapper.appendChild(school_input);
+            }
+        }
+
+        number_children = document.getElementById('children-number');
+        
+        let option = document.getElementById('children-number-selector');
+        console.log(option.value);
+        if(option.value === "No"){
+            document.getElementById('children-number').style.display = "block";
+            document.getElementById('children-input').required = true;
+        } else {
+            document.getElementById('children-number').style.display = "none";
+            document.getElementById('children-input').required = false;
+
+        }
+
+        secondGodparent();
+        firstWitness();
+        secondWitness();
+        courseAttended();
+
+        fatherBaptised();
+        motherBaptised();
+
+        
+    }
+
+
+    function childrenRows() {
+        number_children = document.getElementById('children-number');
+        
+        let option = document.getElementById('children-number-selector');
+        console.log(option.value);
+        if(option.value === "No"){
+            document.getElementById('children-number').style.display = "block";
+            document.getElementById('children-input').required = true;
+        } else {
+            document.getElementById('children-number').style.display = "none";
+            document.getElementById('children-input').required = false;
+
+        }
+    }
+
+    function fatherBaptised() {
+        let option = document.getElementById('father-baptised');
+        console.log(option.value);
+
+        if(option.value === "No"){
+            document.getElementById('id_father_religion').required = false;
+            document.getElementById('id_father_date_baptism').required = false;
+            document.getElementById('id_father_date_baptism').required = false;
+            document.getElementById('id_father_baptism_church').required = false;
+            document.getElementById('id_father_date_confirmation').required = false;
+            document.getElementById('id_father_confirmation_church').required = false;
+        }
+        else {
+            document.getElementById('id_father_religion').required = true;
+            document.getElementById('id_father_date_baptism').required = true;
+            document.getElementById('id_father_date_baptism').required = true;
+            document.getElementById('id_father_baptism_church').required = true;
+            document.getElementById('id_father_date_confirmation').required = false;
+            document.getElementById('id_father_confirmation_church').required = false;
+        }
+
+    }
+
+    function motherBaptised() {
+        let option = document.getElementById('mother-baptised');
+        console.log(option.value);
+
+        if(option.value === "No"){
+            document.getElementById('id_mother_religion').required = false;
+            document.getElementById('id_mother_date_baptism').required = false;
+            document.getElementById('id_mother_date_baptism').required = false;
+            document.getElementById('id_mother_baptism_church').required = false;
+            document.getElementById('id_mother_date_confirmation').required = false;
+            document.getElementById('id_mother_confirmation_church').required = false;
+        }
+        else {
+            document.getElementById('id_mother_religion').required = true;
+            document.getElementById('id_mother_date_baptism').required = true;
+            document.getElementById('id_mother_date_baptism').required = true;
+            document.getElementById('id_mother_baptism_church').required = true;
+            document.getElementById('id_mother_date_confirmation').required = true;
+            document.getElementById('id_mother_confirmation_church').required = true;
+        }
+
+    }
+
+    function addChildrenFields() {
+        var number_of_children = document.getElementById('children-input').value
+
+        if(number_of_children > 10){
+            alert("Please enter a value 10 or under");
+        } else{
+            console.log("starting");
+            var children_wrapper = document.getElementById('childrenInfoWrapper');
+            children_wrapper.innerHTML = '';
+            for (var i=0; i<number_of_children; i++){
+                // Name Input
+                children_wrapper.appendChild(document.createTextNode("Child "+ (i+1)));
+                var input = document.createElement("input");
+                input.classList.add('form-control');
+                input.type = "text";
+                input.name = "child-name-"+(i+1);
+                input.placeholder = "Child " + (i+1) + " name";
+                input.required = true
+                children_wrapper.appendChild(input);
+
+                // Dob Input
+                children_wrapper.appendChild(document.createTextNode("Child " + (i+1) + " DOB"));
+                var dob_input = document.createElement("input");
+                dob_input.classList.add('form-control');
+                dob_input.type = "date";
+                dob_input.name = "child-dob-"+(i+1);
+                dob_input.placeholder = "10/10/2022"
+                dob_input.required = true;
+                children_wrapper.appendChild(dob_input);
+
+                // Date of Baptism - will be left blank if not baptised
+                children_wrapper.appendChild(document.createTextNode("Child " + (i+1) + " Date of Baptism"));
+                var baptismd_input = document.createElement("input");
+                baptismd_input.classList.add('form-control');
+                baptismd_input.type = "date";
+                baptismd_input.name = "child-baptism-" + (i+1);
+                baptismd_input.placeholder = "Date of Baptism";
+                children_wrapper.appendChild(baptismd_input);
+
+                // Child School - will be left blank if not baptised
+                children_wrapper.appendChild(document.createTextNode("School/Nursery of Child " + (i+1)));
+                var school_input = document.createElement("input");
+                school_input.classList.add('form-control', 'mb-4');
+                school_input.type = "text";
+                school_input.name = "child-school-" + (i+1);
+                school_input.placeholder = "School of Child "+ (i+1);
+                children_wrapper.appendChild(school_input);
+            }
+        }
+    }
+
+    function secondGodparent() {
+        var name = document.getElementById('id_godparent_name_2').value;
+        
+        if (name != ""){
+            document.getElementById('id_godparent_address_2').required = true;
+            document.getElementById('id_godparent_postcode_2').required = true;
+            document.getElementById('id_godparent_telephone_2').required = true;
+            document.getElementById('id_godparent_dob_2').required = true;
+            document.getElementById('id_godparent_baptism_church_2').required = true;
+            document.getElementById('id_godparent_confirmation_date_2').required = true;
+            document.getElementById('id_godparent_confirmation_church_2').required = true;
+            document.getElementById('id_godparent_practicing_2').required = true;
+        } else {
+            document.getElementById('id_godparent_address_2').required = false;
+            document.getElementById('id_godparent_postcode_2').required = false;
+            document.getElementById('id_godparent_telephone_2').required = false;
+            document.getElementById('id_godparent_dob_2').required = false;
+            document.getElementById('id_godparent_baptism_church_2').required = false;
+            document.getElementById('id_godparent_confirmation_date_2').required = false;
+            document.getElementById('id_godparent_confirmation_church_2').required = false;
+            document.getElementById('id_godparent_practicing_2').required = false;
+        }
+    }
+
+    function firstWitness() {
+        var name = document.getElementById('id_cw_name').value;
+        console.log("name " + name);
+
+        if (name != ""){
+            document.getElementById('id_cw_gender').required = true;
+            document.getElementById('id_cw_religion').required = true;
+            document.getElementById('id_cw_practicing').required = true;
+        } else{
+            document.getElementById('id_cw_gender').required = false;
+            document.getElementById('id_cw_religion').required = false;
+            document.getElementById('id_cw_practicing').required = false;
+        }
+
+    }
+
+    function secondWitness() {
+        var name = document.getElementById('id_cw_name_2').value;
+        console.log("name " + name);
+
+        if (name != ""){
+            document.getElementById('id_cw_gender_2').required = true;
+            document.getElementById('id_cw_religion_2').required = true;
+            document.getElementById('id_cw_practicing_2').required = true;
+        } else{
+            document.getElementById('id_cw_gender_2').required = false;
+            document.getElementById('id_cw_religion_2').required = false;
+            document.getElementById('id_cw_practicing_2').required = false;
+        }
+
+    }
+
+    function courseAttended() {
+        var attended = document.getElementById('id_course_attended').value;
+
+        if(attended === "No")
+            document.getElementById('id_course_church').required = false;
+        else
+            document.getElementById('id_course_church').required = true;
+    }
+
+    // $('#submit').on('click',function() {
+    //     beforeSubmission();
+        
+    // });
+
+    // function beforeSubmission() {
+    // console.log('here');
+    // // could add all of the other functions here to make them run
+    // return false;
+    // // if you want to submit the form here 
+    // // $('#form').submit();
+    // }
+    function onSubmit(){
+        fatherBaptised();
+        motherBaptised();
+        secondGodparent();
+        firstWitness();
+        secondWitness();
+        courseAttended();
+
+        // Check if the Telephone or Email is entered
+        var telephone_number = document.getElementById('id_telephone_number').value;
+        var email = document.getElementById('id_email').value;
+
+        if ((telephone_number === "") && (email === ""))
+            alert('Please enter either a telephone number or email');
+            return false;
+
+
+        console.log('here');
+        const children_dictionary = {};
+        console.log(document.getElementById('children-number-selector').value);
+        if (document.getElementById('children-number-selector').value === "No"){
+            var number_of_children = document.getElementById('children-input').value;
+            if ((number_of_children === null) || (number_of_children === "") || (number_of_children > 15)){
+                alert('Please enter a valid input for the number of other children');
+                return false;
+            }
+
+            var truth = true;
+            for(var i=0; i<number_of_children; i++){
+                console.log(i);
+                var temp = []
+                temp[0] = document.querySelector('[name="child-name-'+(i+1)+'"]').value;
+                temp[1] = document.querySelector('[name="child-dob-'+(i+1)+'"]').value;
+                if((document.querySelector('[name="child-baptism-'+(i+1)+'"]').value) === "")
+                    temp[2] = "None";
+                else
+                    temp[2] = document.querySelector('[name="child-baptism-'+(i+1)+'"]').value;
+                
+                if ((document.querySelector('[name="child-school-'+(i+1)+'"]').value) === "")
+                    temp[3] = "None";
+                else
+                    temp[3] = document.querySelector('[name="child-school-'+(i+1)+'"]').value;
+
+
+                children_dictionary["child-"+(i+1)] = temp;
+            }
+
+            console.log("dictionary");
+            console.log(children_dictionary);
+
+        }
+
+        
+
+
+        document.getElementById("whole-form").submit();
+        }
+</script>
+{% endblock %}
+
+{% endblock %}

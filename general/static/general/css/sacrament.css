@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+.navWholeContainer {
+    position: relative;
+    height: 240px;
+}
+
+.navImageContainer {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    top: 0px; 
+    left: 0px;
+    opacity: 0.35;
+}
+
+.navWholeContainer #navbar {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+}
+
+.navWholeContainer #navContent {
+    position: absolute;
+    bottom: 0px;
+    font-family: 'lato';
+    font-size: 32px;
+    color: #080808;
+    font-weight: 700;
+    margin: 32px;
+}
+
+.sacramentContent{
+    width: 100%;
+}
+
+figure {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.sacramentContent img {
+    width: 100%;
+}
+
+.entryWrapper {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    font-weight: 600;
+    font-family: 'lato';
+    font-size: 16px;
+}
+
+.form-label .compliment-text {
+    font-weight: 400;
+}
+@media(min-width: 768px) {
+    .navWholeContainer {
+        min-height: 288px;
+    }
+
+    .sacramentTitle h1{
+        font-weight: 700;
+    }
+
+    .sacramentContent {
+        width: 75%;
+        min-height: 100vh;
+    }
+
+    figure {
+        max-width: 50%;
+    }
+
+    .sacramentContent img {
+        width: 75%;
+    }
+}

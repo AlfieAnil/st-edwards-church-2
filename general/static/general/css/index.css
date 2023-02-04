@@ -1,0 +1,340 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+.homeContent {
+    height: 100vh;
+    position: relative;
+    background-color: #f2f2f2;
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
+    font-family: 'lato';
+    scroll-behavior: smooth;
+}
+/* Landing Page Mobile */
+.landing {
+    height: 84vh;
+    width: 100%;
+    position: relative;
+    /* background-color: red; */
+}
+
+.frontlayer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    height: 40%;
+    width: 100%;
+    /* border: 1px solid red; */
+    /* padding: 0px 1rem; */
+}
+
+.bg-img-1 {
+    background-image: url("/static/img/stock1.jpeg");
+}
+
+.bg-image-2 {
+    background-image: url("general/img/stock2.jpeg");
+}
+
+
+.carousel-image {
+    
+    height: 84vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.5;
+}
+
+.homeTitle {
+    
+    font-size: 1.8rem;
+    font-family: 'lato';
+    font-weight: 700;
+    color: #080808;
+}
+
+.homeComment {
+    font-size: 1rem;
+    font-family: 'lato';
+    font-weight: 400;
+    color: #505050;
+}
+
+.findButton {
+    font-size: 16px;
+    font-family: 'lato';
+    font-weight: 400;
+    text-decoration: none;
+    color: white;
+    height: 48px;
+    width: 153px;
+    border-radius: 50px;
+    background: linear-gradient(128.66deg, #FF3822 26.67%, #143AA2 72.22%);
+    transition: all 1s;
+}
+
+.findButton:hover {
+    /* background: linear-gradient(128.66deg, #143AA2 26.67%, #FF3822 72.22%); */
+    width: 200px;
+    color: white;
+}
+
+/* Message from Parish Priest */
+.priestWelcomeBackground {
+    background-color: #f2f2f2;
+}
+.priestMessage {
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: 'lato';
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #080808;
+}
+
+.priestText {
+    font-family: 'lato';
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #383838;
+    font-style: italic;
+}
+
+.speechMarks {
+    font-weight: 700;
+}
+
+
+/* Our Parish Section */
+.ourParishContainer {
+    background-color: #A33C24;
+}
+
+.ourParishTitle {
+    font-family: 'lato';
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+}
+
+.ourParishMessage {
+    font-family: 'lato';
+    font-size: 1.4rem;
+    /* color: #383838; */
+    color: white;
+}
+
+/* Holy Mass Section */
+.massTimesTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.churchTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.sacredHeartTimes {
+    background-color: rgba(255, 56, 34, 0.8);
+    font-size: 1.4rem;
+    color: white;
+}
+
+.stCuthbertsTimes {
+    background: rgba(20, 58, 162, 0.8);
+    font-size: 1.4rem;
+    color: white;
+}
+
+.dayLabel {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.space {
+    height: 100px;
+    width: 100px;
+    background-color: #080808;
+}
+
+.timeLabel {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.commentLabel {
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Messages from Fr Giorgio */
+
+.priestMessageTitle {
+    font-family: 'lato';
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.priestMessageContainer {
+    border: 2px solid #909090;
+    /* border-top: none;
+    border-radius: 0px 0px 10px 10px; */
+    border-radius: 10px;
+    min-width: 100%;
+}
+
+.hoverImage {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.priestMessageContainerImage {
+    border: 2px solid #909090;
+    /* border-top: none;
+    border-radius: 0px 0px 10px 10px; */
+    border-radius: 10px;
+    min-width: 100%;
+}
+
+.priestMessageTextContainer {
+    font-family: 'lato';
+}
+
+.priestMessageTextContainer h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.priestMessageTextContainer h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.priestMessageTextContainer h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.priestMessageImage {
+    height: 240px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.imageLayerImage {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    width: 90%;
+    text-decoration: none;
+    transition: all 0.75s;
+}
+
+.imageLayerText {
+    text-decoration: none;
+    color: #080808;
+    
+    font-family: 'lato';
+    font-size: 1.6rem;
+    transition: all 0.75s;
+}
+
+.imageLayerText:hover {
+    transform: translateY(20px);
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+/* Landing Page Desktop */
+@media(min-width: 768px){
+    .landing {
+        height: 100vh;
+    }
+
+    .carousel-image {
+        height: 100vh;
+    }
+
+    .frontlayer{
+        /* border: 1px solid red; */
+        height: 100%;
+        width: 60%;
+    }
+    
+    .homeTitle{
+        font-size: 48px;
+    }
+    .homeComment {
+        font-size: 28px;
+    }
+
+
+    .homeTitle, .homeComment{
+        margin-bottom: 10px;
+    }
+
+    /* Mass Times */
+    .massTimesContainer {
+        padding: 100px;
+    }
+
+
+    /* Priest Message Container */
+    .priestMessageContainer {
+        min-width: 0px;
+        width: 350px;
+        max-width: 350px;
+    }
+
+}

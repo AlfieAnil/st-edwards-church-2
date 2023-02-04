@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            height: 1px;
+        }
+        .content {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    {{ baptism.SacramentName }}
+    <div class="content" style="width: 100%; border: 1px solid red; overflow-x: auto;">
+    {{ baptism.SacramentDescription | safe}}
+    {{ baptism.SacramentDescription }}
+    </div>
+    <style>
+        editor.on('insertElement', function(event) {
+                var element = event.data;
+                if (element.getName() == 'img') {
+                    element.addClass('contentimage');
+                }
+            });
+    </style>
+</body>
+</html>
