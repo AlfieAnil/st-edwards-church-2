@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q#hbs!ed4e%6&5oou%h+ynsl*c3&rhb5x76nie@h04*r)3$h*+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Change made from true to false
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '7441-82-24-132-165.eu.ngrok.io',
@@ -70,8 +71,20 @@ INSTALLED_APPS = [
     'django_ckeditor_5'
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+# CHANGE MADE: OLD MIDDLEWARE
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
