@@ -29,6 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '7441-82-24-132-165.eu.ngrok.io',
     '127.0.0.1',
+    'https://st-edwards-one.herokuapp.com',
     'cbb1-82-24-132-165.eu.ngrok.io'
 ]
 
