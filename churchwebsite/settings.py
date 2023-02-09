@@ -129,23 +129,23 @@ WSGI_APPLICATION = 'churchwebsite.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bwado6aehnyfisyhfkwh',
-#         'USER': 'u7sarwynub3ar0zx',
-#         'PASSWORD': 'zS83QWW8ayLEuiTlFzlQ',
-#         'HOST': 'bwado6aehnyfisyhfkwh-mysql.services.clever-cloud.com',
-#         'PORT': '3306'
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bwado6aehnyfisyhfkwh',
+        'USER': 'u7sarwynub3ar0zx',
+        'PASSWORD': 'zS83QWW8ayLEuiTlFzlQ',
+        'HOST': 'bwado6aehnyfisyhfkwh-mysql.services.clever-cloud.com',
+        'PORT': '3306'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
