@@ -10,9 +10,9 @@
 
 {% block navbar %}
 <div class="navWholeContainer">
-    <img src="{%static 'static/img/Schools.jpeg'%}" class="navImageContainer d-md-none">
+    <img src="{%static 'static/img/Schools.jpeg'%}" class="navImageContainer d-lg-none">
     {% include 'navbar.html' %}
-    <div id="navContent" class="d-md-none">
+    <div id="navContent" class="d-lg-none">
         <div class="container">
             <div class="row">
                 <div class="col-12">Schools</div>
@@ -24,7 +24,7 @@
 
 {% block content %}
 <div style="background-color: #f2f2f2">
-    <div class="navWholeContainer d-none d-md-block">
+    <div class="navWholeContainer d-none d-lg-block">
         <img src="{% static 'static/img/Schools.jpeg' %}" class="navImageContainer" alt="">
         <div id="navContent">
             <div class="container">
@@ -42,15 +42,15 @@
         <div class="my-4">
             <div class="schoolContainer">
                 <div class="row">
-                    <div class="schoolLogo d-flex justify-content-center align-items-center col-md-2">
+                    <div class="schoolLogo d-flex justify-content-center align-items-center col-lg-2">
                         <img src="{{ school.schoolIcon.url }}" alt="">
                     </div>
 
-                    <div class="d-flex col-md-1 justify-content-center align-items-center">
+                    <div class="d-flex col-lg-1 justify-content-center align-items-center">
                         <div class="conSeparator"></div>
                     </div>
 
-                    <div class="d-md-flex flex-md-column justify-content-center schoolInformation col-md-7 px-4 py-2">
+                    <div class="d-lg-flex flex-lg-column justify-content-center schoolInformation col-lg-7 px-4 py-2">
                         <div class="schoolName">
                             {{ school.schoolName }}
                         </div>
@@ -60,15 +60,15 @@
                         </div>
                     </div>
 
-                    <div class="schoolSocials mb-2 mb-md-4 d-flex d-md-block justify-content-around m-auto m-md-0 ms-md-auto">
+                    <div class="schoolSocials mb-2 mb-lg-4 d-flex d-lg-block justify-content-around m-auto m-lg-0 ms-lg-auto">
                         <div class="d-md-flex">
-                            <a class="phone d-md-flex flex-wrap flex-row" href="tel:{{ school.schoolPhone }}">
+                            <a class="phone d-md-flex mt-md-4 mt-lg-0 flex-wrap flex-row" href="tel:{{ school.schoolPhone }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                                 </svg>
                             </a>
 
-                            <div class="d-none ms-3 d-md-block complimentText">
+                            <div class="d-none ms-3 d-lg-block complimentText">
                                 Phone: <a href="tel:{{ school.schoolPhone }}">{{ school.schoolPhone }}</a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 </svg>
                             </a>
 
-                            <div class="d-none ms-md-3 d-md-block complimentText">
+                            <div class="d-none ms-md-3 d-lg-block complimentText">
                                 Facebook: <a href="{{ school.schoolFacebook }}">{{ school.schoolFacebook }}</a>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                 </svg>
                             </a>
 
-                            <div class="d-none ms-md-3 d-md-block complimentText">
+                            <div class="d-none ms-md-3 d-lg-block complimentText">
                                 Website: <a href="{{ school.schoolWebsite }}">{{ school.schoolWebsite }}</a>
                             </div>
                         </div>

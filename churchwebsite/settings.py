@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q#hbs!ed4e%6&5oou%h+ynsl*c3&rhb5x76nie@h04*r)3$h*+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Change made from true to false
 DEBUG = True
 
 ALLOWED_HOSTS = [
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'general',
     'administration_station',
@@ -70,8 +72,20 @@ INSTALLED_APPS = [
     'django_ckeditor_5'
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+# CHANGE MADE: OLD MIDDLEWARE
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,6 +116,8 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR)]
 
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 WSGI_APPLICATION = 'churchwebsite.wsgi.application'
 
 
@@ -115,23 +131,23 @@ WSGI_APPLICATION = 'churchwebsite.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bwado6aehnyfisyhfkwh',
-#         'USER': 'u7sarwynub3ar0zx',
-#         'PASSWORD': 'zS83QWW8ayLEuiTlFzlQ',
-#         'HOST': 'bwado6aehnyfisyhfkwh-mysql.services.clever-cloud.com',
-#         'PORT': '3306'
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bwado6aehnyfisyhfkwh',
+        'USER': 'u7sarwynub3ar0zx',
+        'PASSWORD': 'zS83QWW8ayLEuiTlFzlQ',
+        'HOST': 'bwado6aehnyfisyhfkwh-mysql.services.clever-cloud.com',
+        'PORT': '3306'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation

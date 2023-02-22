@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{% static 'general/css/parish-hub.css' %}">
 {% endblock styling %}
 
-{% block windowTitle %} Parish Hub {% endblock %}
+{% block windowTitle %}Parish Hub | Parish of St Edward the Confessor Wigan {% endblock %}
 
 {% block navbar %}
 <div class="navWholeContainer">
-    <img src="{%static 'static/img/ParishHub.jpeg'%}" class="navImageContainer d-md-none">
+    <img src="{%static 'static/img/ParishHub.jpeg'%}" class="navImageContainer d-lg-none">
     {% include 'navbar.html' %}
-    <div id="navContent" class="d-md-none">
+    <div id="navContent" class="d-lg-none">
         <div class="container">
             <div class="row">
                 <div class="col-12">Parish Hub</div>
@@ -23,7 +23,7 @@
 {% block content %}
 {% load static %}
 <div style="background-color: #f2f2f2">
-    <div class="navWholeContainer d-none d-md-block">
+    <div class="navWholeContainer d-none d-lg-block">
         <img src="{% static 'static/img/ParishHub.jpeg' %}" class="navImageContainer" alt="">
         <div id="navContent">
             <div class="container">

@@ -296,8 +296,12 @@
     object-fit: cover;
   }
 
+  .priestImage img {
+    width: 35vw;
+  }
+
 /* Landing Page Desktop */
-@media(min-width: 768px){
+@media(min-width: 1023px){
     .landing {
         height: 100vh;
     }
@@ -335,6 +339,11 @@
         min-width: 0px;
         width: 350px;
         max-width: 350px;
+    }
+
+    .priestImage img {
+        width: 100%;
+        padding-left: 5%;
     }
 
 }

@@ -1,11 +1,11 @@
 <!-- Nav bar -->
 {% load static %}
-<nav class="navbar navbar-expand-lg d-md-none">
+<nav class="navbar navbar-expand-lg d-lg-none">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'home' %}">
         <img src="{% static 'static/img/parish_logo.png' %}" class="navbar_image" alt="St Edwards">
       </a>
-      <button class="navbar-toggler collapsed d-flex d-md-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-icon top-bar"></span>
         <span class="toggler-icon middle-bar"></span>
         <span class="toggler-icon bottom-bar"></span>
@@ -39,7 +39,7 @@
   </nav>
 
 <div class="deskNavContainer">
-  <div class="desktopNavbar d-none d-md-flex flex-column align-items-center">
+  <div class="desktopNavbar d-none d-lg-flex flex-column align-items-center">
     <div class="desktopLogo d-flex mx-auto ps-3">
         <img src="{% static 'static/img/parish_logo.png' %}" alt="St Edwards">
     </div>

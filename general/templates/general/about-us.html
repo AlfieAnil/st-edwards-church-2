@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'general/css/about-us.css' %}">
 {% endblock %}
 
-{% block windowTitle %}About us{% endblock %}
+{% block windowTitle %}About us | Parish of St Edward the Confessor Wigan{% endblock %}
 
 {% block navbar %}
 <div class="navColorContainer">
@@ -40,7 +40,7 @@
     <div class="container aboutUsContent mt-4">
         <div class="ourClergy">
             {% for clergy in clergy_list %}
-                <div class="row d-md-none">
+                <div class="row d-lg-none">
                     <div class="col-12">
                         <div class="clergyContainer shadow mb-4">
                             <div class="clergyImage">
@@ -67,7 +67,7 @@
                 
                 <!-- Desktop -->
                 {% if forloop.counter|divisibleby:2 == 0 %}
-                    <div class="row d-none d-md-flex justify-content-end align-items-center" style="margin-bottom: 50px; margin-right: 64px; margin-left: 64px;">
+                    <div class="row d-none d-lg-flex justify-content-end align-items-center" style="margin-bottom: 50px; margin-right: 64px; margin-left: 64px;">
                         <div class="col-6">
                             <div class="clergyName">
                                 {{ clergy.clergyName }}
@@ -96,7 +96,7 @@
 
                 {% else %}
 
-                    <div class="row d-none d-md-flex justify-content-start align-items-center" style="margin-bottom: 50px;">
+                    <div class="row d-none d-lg-flex justify-content-start align-items-center" style="margin-bottom: 50px;">
                         <div class="col-6 order-2">
                             <div class="clergyName">
                                 {{ clergy.clergyName }}
