@@ -29,7 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '7441-82-24-132-165.eu.ngrok.io',
     '127.0.0.1',
-    'cbb1-82-24-132-165.eu.ngrok.io'
+    'cbb1-82-24-132-165.eu.ngrok.io',
+    'www.stedwardtheconfessor.church'
 ]
 
 
