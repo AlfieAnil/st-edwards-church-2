@@ -264,7 +264,6 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.foo',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
@@ -273,11 +272,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_ckeditor_5',
-    
-    # stores the files
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'cloudinary',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # CHANGE MADE: OLD MIDDLEWARE
@@ -375,13 +369,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'htvdelwwd',
-    'API_KEY': '268821441713321',
-    'API_SECRET': 'v4b584dpwkwZ7rOR2ug6Nabmj8w',
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
