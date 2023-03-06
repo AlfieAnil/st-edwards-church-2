@@ -375,6 +375,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'htvdelwwd',
+    'API_KEY': '268821441713321',
+    'API_SECRET': 'v4b584dpwkwZ7rOR2ug6Nabmj8w',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
