@@ -271,7 +271,12 @@ INSTALLED_APPS = [
     'administration_station',
     'ckeditor',
     'ckeditor_uploader',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    
+    # stores the files
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # CHANGE MADE: OLD MIDDLEWARE
